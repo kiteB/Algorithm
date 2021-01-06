@@ -2,11 +2,9 @@
 case = input()
 
 croatia = ['c=', 'c-', 'dz=', 'd-', 'lj', 'nj', 's=', 'z=']
-count = 0
 
 for i in croatia:
     if i in case:
-        count += 1
-        print(i)
+        case = case.replace(i, '.')
 
-print(len(case)-count)
+print(len(case))
