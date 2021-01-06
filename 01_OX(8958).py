@@ -11,7 +11,7 @@ for i in range(n):  # 테스트 케이스만큼 반복
         if j == 'O':            # 'O'인 경우
             count += 1          # 'O'가 나왔으니 count + 1
             score += count      # count 만큼 더해주기
-        elif j == 'X':          # 'X'인 경우
+        else:                   # 'X'인 경우
             count = 0           # count 0로 초기화
 
     print(score)
