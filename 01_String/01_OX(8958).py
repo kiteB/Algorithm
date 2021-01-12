@@ -2,10 +2,10 @@
 n = int(input())    # 테스트 케이스의 개수
 
 
-for i in range(n):  # 테스트 케이스만큼 반복
+for i in range(n):  # 테스트 케이스 개수만큼 반복
     score = 0
     count = 0       # 연속된 O의 개수
-    a = input()
+    a = input()     # OX 퀴즈 결과
 
     for j in a:
         if j == 'O':            # 'O'인 경우
