@@ -2,33 +2,35 @@
 # 첫째 줄에 초기에 편집기에 입력되어 있는 문자열이 주어짐.
 # 둘째 줄에는 명령어의 개수를 나타내는 정수 M이 주어짐.
 # 모든 명령어를 수행하고 난 후 편집기에 입력되어 있는 문자열을 출력하라.
-case = list(input())
-N = int(input())
-cursor = len(case)
+from collections import deque
+import sys
+
+deq_1 = deque(sys.stdin.readline().strip())
+deq_2 = deque()
+N = int(sys.stdin.readline())
 
 for i in range(N):
-    command = list(input())
+    command = sys.stdin.readline().split()
 
-    # 커서를 왼쪽으로 한 칸 옮김
+    # L 입력 -> 커서를 왼쪽으로 한 칸 옮김
     if command[0] == 'L':
-        if cursor != 0:
-            cursor -= 1
+        if len(deq_1) != 0:
+            deq_2.appendleft(deq_1.pop())
 
-    # 커서를 오른쪽으로 한 칸 옮김
+    # D 입력 -> 커서를 오른쪽으로 한 칸 옮김
     elif command[0] == 'D':
-        if cursor != len(command)+1:
-            cursor += 1
+        if len(deq_2) != 0:
+            deq_1.append(deq_2.popleft())
 
-    # 커서 왼쪽에 있는 문자를 삭제
+    # B 입력 -> 커서 왼쪽에 있는 문자를 삭제
     elif command[0] == 'B':
-        if cursor != 0:
-            del case[cursor-1]
-            cursor -= 1
+        if len(deq_1) != 0:
+            deq_1.pop()
 
-    # 문자를 커서 왼쪽에 추가
+    # P $ 입력 -> $라는 문자를 커서 왼쪽에 추가하기
     elif command[0] == 'P':
-        case.insert(cursor, command[2])
-        cursor += 1
+        deq_1.append(command[1])
 
-# 문자열로 합쳐주기
-print(''.join(case))
+for i in deq_2:
+    deq_1.append(i)
+print(''.join(deq_1))

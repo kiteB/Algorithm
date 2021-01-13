@@ -2,24 +2,44 @@
 # 산술평균, 중앙값, 최빈값, 범위
 # 산술평균은 소수점 이하 첫째 자리에서 반올림한 값 출력
 # 최빈값이 여러 개일 경우에는 최빈값 중 두 번째로 작은 값 출력
-N = int(input())
+import sys
+from collections import Counter
+
+N = int(sys.stdin.readline())
 numbers = []
-cnt = []
 
-for i in range(N):
-    numbers.append(int(input()))
+# 1개의 수가 입력되었을 때,
+if N == 1:
+    num = int(sys.stdin.readline())
+    # 산술평균
+    print(num)
+    # 중앙값
+    print(num)
+    # 최빈값
+    print(num)
+    # 범위
+    print(0)
 
-# 산술평균
-avg = sum(numbers)/N
-print(round(avg))
+else:
+    # numbers에 입력 저장
+    for i in range(N):
+        numbers.append(int(sys.stdin.readline()))
 
-# 중앙값
-median = numbers[round(N/2 + 1)]
-print(median)
+    # numbers 정렬
+    numbers.sort()
 
-# 최빈값
-# 아직 구현 못함
+    # 산술평균
+    print(round(sum(numbers)/N))
 
-# 범위
-difference = max(numbers) - min(numbers)
-print(difference)
+    # 중앙값
+    print(numbers[N//2])
+
+    # 최빈값
+    mode = Counter(numbers).most_common()
+    if mode[0][1] == mode[1][1]:
+        print(mode[1][0])
+    else:
+        print(mode[0][0])
+
+    # 범위
+    print(max(numbers) - min(numbers))
