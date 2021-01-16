@@ -35,8 +35,8 @@ else:
     print(numbers[N//2])
 
     # 최빈값
-    mode = Counter(numbers).most_common()
-    if mode[0][1] == mode[1][1]:
+    mode = Counter(numbers).most_common()     # [('1': 2), ('2': 1)]
+    if mode[0][1] == mode[1][1]:        # 최빈값의 개수가 여러 개인 경우
         print(mode[1][0])
     else:
         print(mode[0][0])
