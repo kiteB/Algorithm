@@ -4,28 +4,31 @@
 # 입력: 첫째 줄에 회의의 수 N이 주어진다. 둘째 줄부터 N+1줄까지 각 회의의 정보가 주어진다.
 # 출력: 첫째 줄에 최대 사용할 수 있는 회의의 최대 개수를 출력한다.
 import sys
+import time
 
+tic = time.time()
 N = int(sys.stdin.readline())
-count = 0
+count = 0       # 회의의 최대 개수를 저장할 변수
 lst = []
-room = [0]*100000
+room = []
 
 for i in range(N):
     case = list(map(int, sys.stdin.readline().split()))
-    case.append(case[1]-case[0])
     lst.append(case)
 
-lst = sorted(lst, key=lambda x: (x[2], -x[1]))
+lst = sorted(lst, key=lambda x: (x[1], x[0]))
+print(lst)
 
-# print(lst)
+start = 0
+end = 0
 
 for i in lst:
 
-    if room[int(i[0]):int(i[1])] == [0]*int(i[2]) and int(i[2] != 0):
-        room[int(i[0]):int(i[1])] = [1] * (int(i[2]))
-        count += 1
-
-    if int(i[2]) == 0:
+    if i[0] >= end:
+        start = i[0]
+        end = i[1]
         count += 1
 
 print(count)
+toc = time.time()
+print(toc - tic)

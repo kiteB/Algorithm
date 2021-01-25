@@ -7,8 +7,8 @@ N, M = map(int, input().split())
 card = list(map(int, input().split()))
 sum = 0         # 세 수의 합 저장
 
-for i in range(0, N - 2):
-    for j in range(i+1, N - 1):
+for i in range(0, N-2):
+    for j in range(i+1, N-1):
         for k in range(j+1, N):
             if card[i] + card[j] + card[k] <= M:                # 세 수의 합이 M보다 작거나 같은 경우,
                 sum = max(sum, card[i] + card[j] + card[k])     # sum과 세 수의 합 중에서 더 큰 값을 출력하기

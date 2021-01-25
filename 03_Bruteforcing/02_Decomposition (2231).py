@@ -10,9 +10,11 @@ for i in range(1, N+1):
     A = list(map(int, str(i)))  # 숫자 자릿수 분리하기
     result = i + sum(A)         # 숫자 전체 + 각 자릿수의 합
 
+    # result가 N과 같으면, i가 N의 생성자라는 것이므로 i를 출력한다.
     if result == N:
         print(i)
         break
+
+# i가 N이라는 것은 생성자를 찾지 못했다는 것이므로 0을 출력한다.
 if i == N:
     print(0)
-
