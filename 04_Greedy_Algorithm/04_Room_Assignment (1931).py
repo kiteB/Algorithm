@@ -4,9 +4,7 @@
 # 입력: 첫째 줄에 회의의 수 N이 주어진다. 둘째 줄부터 N+1줄까지 각 회의의 정보가 주어진다.
 # 출력: 첫째 줄에 최대 사용할 수 있는 회의의 최대 개수를 출력한다.
 import sys
-import time
 
-tic = time.time()
 N = int(sys.stdin.readline())
 count = 0       # 회의의 최대 개수를 저장할 변수
 lst = []
@@ -30,5 +28,3 @@ for i in lst:
         count += 1
 
 print(count)
-toc = time.time()
-print(toc - tic)
