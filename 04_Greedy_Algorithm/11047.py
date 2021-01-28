@@ -6,16 +6,16 @@
 import sys
 
 N, K = map(int, sys.stdin.readline().split())
-coin = []
-count = 0
+coin = []   # 동전 종류 저장하기 위한 리스트
+count = 0   # 동전 개수를 카운트하기 위한 변수
 
 for i in range(N):
     coin.append(int(sys.stdin.readline().strip()))
 
-for i in reversed(coin):
-    if K >= i:
-        count += K // i
-        K = K % i
+for i in reversed(coin):    # 큰 단위의 동전부터 접근하기 위해서 reversed를 이용
+    if K >= i:              # 만약 입력 받은 금액이 i보다 크거나 같다면
+        count += K // i     # K를 i로 나눈 몫을 count에 더해주기
+        K = K % i           # K를 i로 나누었을 때의 나머지로 K를 바꿔주기
 
 print(count)
 

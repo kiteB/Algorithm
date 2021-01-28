@@ -5,8 +5,8 @@ import sys
 
 N = int(sys.stdin.readline())
 times = sorted(list(map(int, sys.stdin.readline().split())))
-sum = 0
+sum = 0     # 시간의 합의 최솟값을 저장하기 위한 변수
 
 for i in range(N):
-    sum += times[i] * (N-i)
+    sum += times[i] * (N-i)     # i번째 시간은 총 (N-i)번 더해지게 된다.
 print(sum)

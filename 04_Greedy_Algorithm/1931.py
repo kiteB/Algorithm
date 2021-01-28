@@ -7,21 +7,18 @@ import sys
 
 N = int(sys.stdin.readline())
 count = 0       # 회의의 최대 개수를 저장할 변수
-lst = []
-room = []
+lst = []        # 모든 케이스를 저장할 리스트
 
 for i in range(N):
     case = list(map(int, sys.stdin.readline().split()))
     lst.append(case)
 
 lst = sorted(lst, key=lambda x: (x[1], x[0]))
-print(lst)
 
 start = 0
 end = 0
 
 for i in lst:
-
     if i[0] >= end:
         start = i[0]
         end = i[1]

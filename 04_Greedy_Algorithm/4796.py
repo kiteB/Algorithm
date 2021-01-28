@@ -5,10 +5,11 @@
 # 출력: Ex) Case 1: 14 (테스트 케이스 순서와 최대 일수를 출력하라)
 import sys
 
-idx = 1
-while True:
+idx = 1     # index를 체크하기 위해 idx 함수 선언
+while True:     # 테스트 케이스의 개수를 입력받지 않으므로 무한 루프를 돌림
     L, P, V = map(int, sys.stdin.readline().split())
-    cnt = 0
+    cnt = 0     # 최대 사용할 수 있는 일수를 카운트하기 위한 변수
+
     # 0 0 0 이 입력되었을 때 종료
     if L*P*V == 0:
         break
