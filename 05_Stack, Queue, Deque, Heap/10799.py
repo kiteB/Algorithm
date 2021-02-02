@@ -19,13 +19,11 @@ for i in range(len(case)):
     # ')'가 나오면 pop해서 '('을 꺼내기
     else:
         # 현재: ')' and 바로 전: '('
-        if len(stack) != 0:
+        if case[i-1] == '(':
             stack.pop()
             cnt += len(stack)
         # 현재: ')' and 바로 전: ')'
         else:
             stack.pop()
             cnt += 1
-    # print('i: {}, stack: {}, cnt: {}'.format(i, stack, cnt))
 print(cnt)
-
