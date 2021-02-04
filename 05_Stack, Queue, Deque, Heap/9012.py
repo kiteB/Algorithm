@@ -6,7 +6,7 @@ import sys
 T = int(sys.stdin.readline())
 
 for i in range(T):
-    case = sys.stdin.readline().rstrip()
+    case = sys.stdin.readline().strip()
     stack = []
     check = True
 

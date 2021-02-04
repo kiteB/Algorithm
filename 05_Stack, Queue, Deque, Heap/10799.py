@@ -8,7 +8,7 @@
 # 쇠막대기와 레이저의 배치를 나타내는 괄호 표현이 주어졌을 때, 잘려진 쇠막대기 조각의 총 개수를 구하는 프로그램을 작성하시오.
 import sys
 
-case = list(sys.stdin.readline().rstrip())
+case = list(sys.stdin.readline().strip())
 stack = []
 cnt = 0
 
