@@ -9,7 +9,6 @@ for i in numbers:
     # 1인 경우는 break
     if i == 1:
         continue
-
     elif i == 2:
         cnt += 1
 
