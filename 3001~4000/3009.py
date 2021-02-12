@@ -14,23 +14,4 @@ for i in range(3):
         x = list_x[i]
     if list_y.count(list_y[i]) == 1:
         y = list_y[i]
-print(x, y)
-
-import sys
-
-x_list = []
-y_list = []
-
-for _ in range(3):
-    x, y = map(int, sys.stdin.readline().split())
-    x_list.append(x)
-    y_list.append(y)
-
-for i in range(3):
-    if x_list.count(x_list[i]) == 1:
-        x = x_list[i]
-
-    if y_list.count(y_list[i]) == 1:
-        y = x_list[i]
-
-print(x, y)
+print(x, y)s
