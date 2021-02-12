@@ -14,4 +14,4 @@ for i in range(3):
         x = list_x[i]
     if list_y.count(list_y[i]) == 1:
         y = list_y[i]
-print(x, y)s
+print(x, y)
