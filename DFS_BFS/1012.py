@@ -9,6 +9,7 @@
 # 출력: 각 테스트 케이스에 대해 필요한 최소의 배추흰지렁이 마리 수를 출력한다.
 import sys
 
+# RecursionError를 해결하기 위해서 최대 재귀 깊이를 지정해줌.
 sys.setrecursionlimit(10**6)
 cnt = 0
 
@@ -54,8 +55,8 @@ T = int(sys.stdin.readline())
 for _ in range(T):
     M, N, K = map(int, sys.stdin.readline().split())
     field = [[0]*N for _ in range(M)]   # 배추 정보 저장
-    visited = [[0]*N for _ in range(M)]
-    earthworm = []  # 지렁이 개수
+    visited = [[0]*N for _ in range(M)] # 방문 여부를 저장하기 위한 리스트
+    earthworm = []  # 지렁이 개수를 저장할 리스트
     
     for _ in range(K):
         a, b = map(int, sys.stdin.readline().split())

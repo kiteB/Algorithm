@@ -20,14 +20,14 @@ for i in range(N):
 
 
 def numbering(x, y):
-    # 전역변수 cnt 설정
+    # 전역변수 cnt
     global cnt
 
     # 방문했던 적이 없는 노드라면 visited[x][y]를 1로 바꿔주기
     if visited[x][y] == 0:
         visited[x][y] = 1
 
-        # 집이 존재한다면 house 1로 바꾸기
+        # 집이 존재한다면 cnt 1 증가
         if maps[x][y] == 1:
             cnt += 1
 

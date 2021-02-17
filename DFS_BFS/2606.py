@@ -8,7 +8,8 @@
 import sys
 
 
-def bfs(g, v, root):
+# print(counting(network, visited, 1))
+def counting(g, v, root):
     queue = [root]   # 시작 노드를 큐에 추가
 
     # 큐가 빌 때까지 반복
@@ -22,10 +23,7 @@ def bfs(g, v, root):
                 if i not in v:
                     queue.append(i)
 
-    cnt = len(v)
-
-    if root in v:
-        cnt -= 1
+    cnt = len(v)-1
 
     return cnt
 
@@ -41,4 +39,4 @@ for i in range(linked_com):
     network[n1].append(n2)
     network[n2].append(n1)
 
-print(bfs(network, visited, 1))
+print(counting(network, visited, 1))
