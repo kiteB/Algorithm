@@ -17,21 +17,19 @@ def tree_cutting(target, data):
 
     while start <= end:
         mid = (start + end) // 2
-        height = 0
+        trees = 0  # 잘린 나무의 합
 
         for i in data:
-            # 잘랐을 때 나무의 양
             if i > mid:
-                height += i - mid
+                trees += i - mid
         
         # 나무의 양이 부족한 경우
-        if height < target:
-            # 왼쪽 
+        if trees < target:
             end = mid - 1
-        # 나무의  양이 충분한 경우
+
+        # 나무의 양이 충분한 경우
         else:
-            # 오른쪽
-            result = mid
+            result = mid    # 절단기 높이
             start = mid + 1
 
     return result
@@ -39,5 +37,4 @@ def tree_cutting(target, data):
 
 N, M = map(int, sys.stdin.readline().split())
 tree = list(map(int, sys.stdin.readline().split()))
-tree.sort()
 print(tree_cutting(M, tree))

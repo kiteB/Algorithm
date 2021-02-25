@@ -14,7 +14,7 @@ def binary_search(target, data):
 
         if data[mid] == target:
             return 1
-        elif data[mid] <= target:
+        elif data[mid] < target:
             start = mid + 1
         else:
             end = mid - 1

@@ -8,20 +8,9 @@ from bisect import bisect_left, bisect_right
 
 
 def binary_search(target, data):
-    start = 0
-    end = len(data) - 1
-
-    while start <= end:
-        mid = (start + end) // 2
-
-        if data[mid] == target:
-            cnt = bisect_right(data, target) - bisect_left(data, target)
-            return cnt
-        elif data[mid] < target:
-            start = mid + 1
-        else:
-            end = mid - 1
-    return 0
+    left = bisect_left(data, target)
+    right = bisect_right(data, target)
+    return right - left
 
 
 N = int(sys.stdin.readline())
