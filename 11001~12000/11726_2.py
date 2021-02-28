@@ -4,11 +4,10 @@
 # 출력: 첫째 줄에 2Xn 크기의 직사각형을 채우는 방법의 수를 10,007로 나눈 나머지를 출력한다.
 import sys
 
-sys.setrecursionlimit(10**6)
-
 n = int(sys.stdin.readline())
 tile = [1, 2, ]
 
 for i in range(2, n+1):
-    tile.append(tile[i-2]+tile[i-1])
+    tile.append(tile[i - 2] + tile[i - 1])
+
 print(tile[n-1] % 10007)

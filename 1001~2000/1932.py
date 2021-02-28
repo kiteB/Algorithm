@@ -10,6 +10,18 @@ n = int(sys.stdin.readline())
 triangle = []
 
 for i in range(n):
-    triangle.append(list(map(int, sys.stdin.readline().strip().split())))
+    triangle.append(list(map(int, sys.stdin.readline().split())))
 
-print(triangle)
+for i in range(1, n):
+    for j in range(i+1):
+        # 맨 왼쪽의 경우
+        if j == 0:
+            triangle[i][0] = triangle[i-1][0] + triangle[i][0]
+        # 맨 오른쪽의 경우
+        elif i == j:
+            triangle[i][j] = triangle[i-1][j-1] + triangle[i][j]
+        # 가운데일 경우
+        else:
+            triangle[i][j] = max(triangle[i-1][j-1] + triangle[i][j], triangle[i-1][j] + triangle[i][j])
+
+print(max(triangle[n-1]))
