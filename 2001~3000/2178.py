@@ -34,4 +34,3 @@ while deq:
             if visited[ny][nx] == 0 and maze[ny][nx] == 1:
                 visited[ny][nx] = visited[y][x] + 1
                 deq.append([ny, nx])
-    print(deq)
