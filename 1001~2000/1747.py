@@ -5,24 +5,26 @@
 import sys
 
 N = int(sys.stdin.readline())
-max_num = 1000001
+max_num = 1000000           # N의 최댓값
+M = int(max_num ** 0.5)     # N의 약수의 최댓값
+prime_numbers = [False, False] + [True] * (max_num-2)   # 소수 판별 저장할 리스트
+answer = 0
 
-# 소수 판별 함수
-prime_numbers = [False, False] + [True] * (max_num-2)
-
-for i in range(2, max_num):
+# 소수 판별
+for i in range(2, M+1):
     if prime_numbers[i]:
         for j in range(i+i, max_num, i):
             prime_numbers[j] = False
 
-answer = 0
-for i in range(N, max_num):
+# 팰린드롬 판별
+for i in range(N, max_num+1):
     num = str(i)
-    end = num[::-1]
-    if num == end and prime_numbers[i]:
+    reverse = num[::-1]
+    if num == reverse and prime_numbers[i]:
         answer = num
         break
 
+# 범위 내에 답이 없으면
 if answer == 0:
     answer = 1003001
 
