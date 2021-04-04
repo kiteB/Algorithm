@@ -6,25 +6,19 @@ import sys
 
 T = int(sys.stdin.readline())   # 각 테스트 케이스의 개수
 
-for i in range(T):
+for _ in range(T):
     N = int(sys.stdin.readline())     # 각 지원자의 수
     scores = []
-    cnt = 0
-    scores_1 = set()
-    scores_2 = set()
+    cnt = 1
 
-    for j in range(N):
+    for _ in range(N):
         scores.append(list(map(int, sys.stdin.readline().split())))
-    scores = sorted(scores, key=lambda x: (x[0], x[1]))
+    scores.sort()   # 서류 점수 기준으로 오름차순 정렬
+    interview = scores[0][1]
 
-    scores_1.add(scores[0][0])
-    scores_2.add(scores[0][1])
-    cnt += 1
-
-    for j in range(1, N):
-        if scores[j][0] <= min(scores_1) or scores[j][1] <= min(scores_2):
-            scores_1.add(scores[j][0])
-            scores_2.add(scores[j][1])
+    for i in range(1, N):
+        if interview > scores[i][1]:
             cnt += 1
+            interview = scores[i][1]
 
     print(cnt)
