@@ -7,10 +7,16 @@ import sys
 import heapq
 
 N = int(sys.stdin.readline())
-table = [list(map(int, sys.stdin.readline().split())) for _ in range(N)]
-heap = []
+table = list(map(int, sys.stdin.readline().split()))
+heapq.heapify(table)
 
-for i in range(N):
-    for j in range(N):
-        heapq.heappush(heap, table[i][j])
-print(heapq.nlargest(N, heap).pop())
+for i in range(1, N):
+    temp = list(map(int, sys.stdin.readline().split()))
+
+    for j in temp:
+        if table[0] < j:
+            heapq.heappush(table, j)
+            heapq.heappop(table)
+
+print(table[0])
+

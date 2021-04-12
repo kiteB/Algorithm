@@ -19,23 +19,22 @@ stack = [[] for _ in range(7)]    # 줄마다 프렛을 저장하기 위한 리�
 cnt = 0     # 멜로디를 연주하는데 필요한 최소 손가락 움직임
 
 for line, fret in note:
-    # 해당 줄에 원소가 있는지 체크
+    # 해당 줄에 원소가 없는 경우
     if len(stack[line]) == 0:
         stack[line].append(fret)
         cnt += 1
-    else:
-        # 해당 줄에 이미 원소가 있는 경우
-        if stack[line][-1] < fret:
-            stack[line].append(fret)
-            cnt += 1
-        else:
-            while len(stack[line]) and stack[line][-1] > fret:
-                stack[line].pop()
-                cnt += 1
-            if len(stack[line]) and stack[line][-1] == fret:
-                continue
 
-            stack[line].append(fret)
+    # 해당 줄에 이미 원소가 있는 경우
+    else:
+        while len(stack[line]) and stack[line][-1] > fret:
+            stack[line].pop()
             cnt += 1
+
+        # 현재 프렛과 같으면 continue
+        if len(stack[line]) and stack[line][-1] == fret:
+            continue
+
+        stack[line].append(fret)
+        cnt += 1
 
 print(cnt)
