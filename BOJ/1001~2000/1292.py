@@ -9,7 +9,6 @@ A, B = map(int, sys.stdin.readline().split())
 numbers = []
 
 for i in range(1000):
-    numbers.append
     for j in range(i):
         numbers.append(i)
 
