@@ -15,16 +15,17 @@ a = deque(map(int, sys.stdin.readline().split()))    # 트럭의 무게들
 bridge = deque(0 for i in range(w))    # 다리의 상태
 time = 0   # 모든 트럭들이 다리를 건너는데 드는 시간
 
-while a:
+while a:    # 다리를 건너지 않은 트럭이 없어질 때까지 반복
     time += 1
-    bridge.popleft()
-    if sum(bridge) + a[0] <= L:
-        bridge.append(a.popleft())
+    bridge.popleft()    # 다리의 가장 왼쪽 요소를 없애줌.
+    if sum(bridge) + a[0] <= L:     # '현재 다리에 있는 트럭의 무게 + 곧 다리를 지나갈 트럭의 무게'가 최대하중보다 작거나 같을 때
+        bridge.append(a.popleft())  # 트럭을 bridge에 추가
     else:
-        bridge.append(0)
+        bridge.append(0)            # 0을 bridge에 추가
 
-while sum(bridge) > 0:
+while sum(bridge) > 0:      # 다리 위에 트럭이 없을 때까지 반복
     time += 1
-    bridge.popleft()
-    bridge.append(0)
+    bridge.popleft()    # 다리의 가장 왼쪽 요소를 없애줌.
+    bridge.append(0)    # 0 추가
+    
 print(time)

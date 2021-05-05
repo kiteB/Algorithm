@@ -5,7 +5,7 @@ from collections import deque
 def cleaning(rx, cy, d):
     deq = deque([[rx, cy]])
     maps[rx][cy] = 2    # 현재 위치 청소
-    cnt = 1
+    cnt = 1     # 청소한 칸의 개수 저장할 변수
 
     while deq:
         x, y = deq.popleft()
@@ -41,9 +41,9 @@ def cleaning(rx, cy, d):
                     return cnt
 
 
-N, M = map(int, sys.stdin.readline().split())
-r, c, direction = map(int, sys.stdin.readline().split())
-maps = [list(map(int, sys.stdin.readline().split())) for i in range(N)]
+N, M = map(int, sys.stdin.readline().split())       # 세로 크기 N, 가로 크기 M
+r, c, direction = map(int, sys.stdin.readline().split())    # 로봇 청소기 좌표 (r, c), 바라보는 방향 d
+maps = [list(map(int, sys.stdin.readline().split())) for i in range(N)]     # 장소의 상태
 
 # 북, 동, 남, 서
 dx = [-1, 0, 1, 0]
