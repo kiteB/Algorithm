@@ -10,8 +10,8 @@
 # - 구명보트의 무게 제한은 40 이상 240 이하이다.
 # - 구명보트의 무게 제한은 항상 사람들의 몸무게 중 최댓값보다 크게 주어지므로 사람들을 구출할 수 없는 경우는 없다.
 def solution(people, limit):
-    answer = len(people)  # 필요한 구명보트의 개수
-    people.sort()
+    answer = len(people)    # 필요한 구명보트의 개수
+    people.sort()           # [50, 50, 70, 80]
     i = 0
     j = len(people) - 1
 
@@ -25,4 +25,4 @@ def solution(people, limit):
     return answer
 
 
-print(solution([10, 20, 30, 70, 90], 100))
+print(solution([70, 50, 80, 50], 100))
