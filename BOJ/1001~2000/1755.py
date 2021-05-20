@@ -6,21 +6,20 @@
 import sys
 
 M, N = map(int, sys.stdin.readline().split())
+# 숫자를 영단어로 매핑
 num_dic = {0: 'zero', 1: 'one', 2: 'two', 3: 'three', 4: 'four',
            5: 'five', 6: 'six', 7: 'seven', 8: 'eight', 9: 'nine'}
+numbers = {}                # M부터 N까지의 숫자의 영단어를 저장하기 위한 dict
 
-idx = list(range(M, N+1))               # M부터 N 까지의 숫자 저장
-numbers = {}
-
-for i in idx:
-    i = str(i)
+# M부터 N까지의 숫자를 영단어로 매핑시키는 과정
+for i in range(M, N+1):
     new = ''
-    for num in i:
+    for num in str(i):
         new += num_dic[int(num)]
-        new += ' '
     numbers[i] = new
 
 idx = 1
+# value 값(영단어)을 기준으로 오름차순으로 정렬한 뒤, 한 줄에 10개씩 key 값을 출력
 for key, val in sorted(numbers.items(), key=lambda x: x[1]):
     if idx % 10 == 0:
         print(key)

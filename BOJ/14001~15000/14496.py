@@ -18,8 +18,7 @@ from collections import deque
 
 
 def bfs(start, end):
-    deq = deque()
-    deq.append(start)
+    deq = deque([start])
     distance[start] = 0
 
     while deq:

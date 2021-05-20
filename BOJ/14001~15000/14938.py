@@ -17,10 +17,6 @@
 import sys
 import heapq
 
-# 최대값 할당
-INF = 1e9
-
-# 입력부
 vertex, limit, edge = map(int, sys.stdin.readline().split())
 item = list(map(int, sys.stdin.readline().split()))
 
@@ -32,35 +28,41 @@ for i in range(edge):
     adj[y-1].append([x-1, z])
 
 
-def dijstra(v):
-    d[v] = 0
+def dijkstra(v):
+    d[v] = 0                    # 시작 노드로 가기 위한 최단 경로는 0
     q = [(d[v], v)]
+
+    # 큐가 비어있지 않다면
     while q:
+        # 가장 최단 거리가 짧은 노드에 대한 정보 꺼내기
         dist, now = heapq.heappop(q)
 
+        # 현재 노드가 이미 처리된 적 있는 노드라면 무시
         if d[now] < dist:
             continue
 
-        for i in range(len(adj[now])):
-            next = adj[now][i][0]
-            nextdistance = adj[now][i][1] + dist
-            if nextdistance < d[next]:
-                d[next] = nextdistance
-                heapq.heappush(q, (nextdistance, next))
+        # 현재 노드와 연결된 다른 인접한 노드들을 확인
+        for i in adj[now]:
+            cost = dist + i[1]
+
+            # 현재 노드를 거쳐서, 다른 노드로 이동하는 거리가 더 짧은 경우
+            if cost < d[i[0]]:
+                d[i[0]] = cost
+                heapq.heappush(q, (cost, i[0]))
 
 
 # 각 정점에 대해 다익스트라 실행
 ans = 0
 for i in range(vertex):
-    d = [INF] * vertex
-    dijstra(i)
+    d = [1e9] * vertex
+    dijkstra(i)
     cnt = item[i]
     for j in range(vertex):
         # 만일 j가 i가 아니고 수색범위 이내라면
         # cnt에 정점 j에서 얻을 수 있는 아이템 수를 더해줌
         if d[j] != 0 and d[j] <= limit:
             cnt += item[j]
-    # 최대값 갱신
+    # 최댓값 갱신
     if ans < cnt:
         ans = cnt
 print(ans)

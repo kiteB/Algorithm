@@ -11,7 +11,7 @@
 # 출력: 각 테스트 케이스에 대해서, 테스트 케이스 번호와 입력으로 주어진 문자열을 안정적으로 바꾸는데 필요한 최소 연산의 수를 출력한다.
 import sys
 
-idx = 1
+idx = 1                         # 테스트케이스 정보
 while True:
     case = sys.stdin.readline().strip()
     stack = []                  # 괄호를 저장할 stack
@@ -34,7 +34,9 @@ while True:
         # '{'이 들어온 경우
         else:
             stack.append(case[i])
+
+    # 연산이 끝났는데 스택이 비어있지 않은 경우
     cnt += len(stack) // 2
 
-    print(f'{idx}. {cnt}')
+    print(f'{idx}. {cnt}')              # 출력 형식
     idx += 1

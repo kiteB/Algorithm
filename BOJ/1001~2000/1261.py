@@ -15,10 +15,9 @@
 import sys
 from collections import deque
 
-
 M, N = map(int, sys.stdin.readline().split())
-maze = [list(map(int, input())) for _ in range(N)]      # 미로 정보를 저장할 리스트
-distance = [[-1] * M for _ in range(N)]                 # 가중치
+maze = [list(map(int, sys.stdin.readline().strip())) for _ in range(N)]
+distance = [[-1] * M for _ in range(N)]
 
 deq = deque([[0, 0]])
 distance[0][0] = 0
@@ -38,7 +37,7 @@ while deq:
                 if maze[ny][nx] == 0:
                     distance[ny][nx] = distance[y][x]
                     deq.appendleft([ny, nx])
-                else:   # maze가 1인 경우 부셔야하므로 +1
+                else:       # 1인 경우에는 부셔야 하므로 +1 해주기
                     distance[ny][nx] = distance[y][x] + 1
                     deq.append([ny, nx])
 
