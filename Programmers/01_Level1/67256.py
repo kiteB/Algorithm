@@ -1,6 +1,4 @@
 # 키패드 누르기
-
-
 def solution(numbers, hand):
     answer = ''
     keypad = {1: [0, 0], 2: [1, 0], 3: [2, 0],

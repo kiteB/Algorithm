@@ -1,6 +1,4 @@
 # [1차] 다트게임
-
-
 def solution(dartResult):
     n = ''
     score = {'S': 1, 'D': 2, 'T': 3}

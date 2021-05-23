@@ -1,6 +1,4 @@
 # 크레인 인형뽑기
-
-
 def solution(board, moves):
     answer = 0
     n = len(board)

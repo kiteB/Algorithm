@@ -1,6 +1,4 @@
 # 신규 아이디 추천
-
-
 def solution(new_id):
     answer = ''
 

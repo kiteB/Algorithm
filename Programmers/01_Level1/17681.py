@@ -1,6 +1,4 @@
 # [1차] 비밀지도
-
-
 def solution(n, arr1, arr2):
     answer = []
     bin1 = []               # arr1을 이진수로 변환한 값을 담을 리스트

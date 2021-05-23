@@ -1,6 +1,4 @@
 # 실패율
-
-
 def solution(N, stages):
     rates = {}
     num = len(stages)
