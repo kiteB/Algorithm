@@ -15,7 +15,7 @@ for student in range(numbers):
     name, Korean, English, math = list(map(str, sys.stdin.readline().split()))
     students[student] = [name, int(Korean), int(English), int(math)]
 
-# 국어는 감소(-), 영어는 증가, 수학은 감소(-), 이름은 증가 순으로 정렬 
-results = sorted(students.values(), key=lambda x: (-x[1], x[2], -x[3], x[0]))
+# 국어는 감소(-), 영어는 증가, 수학은 감소(-), 이름은 증가 순으로 정렬
+results = sorted(students.values(), key=lambda x: [-x[1], x[2], -x[3], x[0]])
 for i in results:
     print(i[0])
