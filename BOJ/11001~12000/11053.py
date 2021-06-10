@@ -8,7 +8,7 @@ import sys
 
 size = int(sys.stdin.readline())
 a = list(map(int, sys.stdin.readline().split()))
-dp = [1] * size
+dp = [1] * size                             # 1로 초기화해주는 이유는 0번째 인덱스가 무조건 1이기 때문
 
 for i in range(size):
     for j in range(i):

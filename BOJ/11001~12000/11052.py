@@ -18,7 +18,15 @@ N = int(sys.stdin.readline())
 cards = [0] + list(map(int, sys.stdin.readline().split()))
 dp = [0 for _ in range(N+1)]
 
+# dp[i] : 카드 i개를 구매하는 최대 가격
+
+# 카드 3개를 구매하는 방법은
+# cards[3] (+ dp[0])
+# cards[2] + dp[1]
+# cards[1] + dp[2]
+
+# dp[i] = cards[j] + dp[i - j]
 for i in range(1, N+1):                 # 1 ~ N까지
     for j in range(1, i+1):             # 1 ~ i까지
-        dp[i] = max(dp[i], dp[i-j] + cards[j])     # dp[i] : 카드 i개를 구매하는 최대 가격
+        dp[i] = max(dp[i], dp[i-j] + cards[j])
 print(dp[N])
