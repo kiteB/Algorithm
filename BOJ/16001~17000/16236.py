@@ -35,15 +35,17 @@ dy = [-1, 0, 1, 0]
 
 
 def solution(y, x):
-    deq, visited = deque([(y, x)]), deque([(y, x)])
+    deq = deque([(y, x)])
+    visited = deque([(y, x)])
     shark = 2           # 아기 상어 크기
-    time = 0            # 걸린 시간
+    time = 0            # 물고기를 잡아먹을 수 있는 시간
     fish = 0            # 상어가 먹은 물고기 수
-    eat_flag = False
+    eat_flag = False    # 현재 상태에서 물고기를 먹은 경우, for 문을 실행시키지 않기 위함.
 
     answer = 0
 
     while deq:
+        # 위쪽, 왼쪽을 우선적으로 하기 위해서 오름차순으로 정렬
         deq = deque(sorted(deq))
 
         for _ in range(len(deq)):
@@ -51,7 +53,7 @@ def solution(y, x):
 
             # 물고기를 먹을 수 있는 경우
             if 1 <= maps[y][x] < shark:
-                maps[y][x] = 0              # 먹었다!
+                maps[y][x] = 0
                 fish += 1
 
                 # 상어 크기 만큼 먹었으면 fish 초기화 & 아기 상어 크기 +1
@@ -75,6 +77,7 @@ def solution(y, x):
                         deq.append((ny, nx))
                         visited.append((ny, nx))
 
+            # 현재 위치에서 물고기를 먹었다면, 더 이상 for문을 돌 필요가 없다.
             if eat_flag:
                 eat_flag = False
                 break
