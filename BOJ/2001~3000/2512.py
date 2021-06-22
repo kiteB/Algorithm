@@ -14,8 +14,7 @@ number = int(sys.stdin.readline())                      # 지방의 수
 budget = list(map(int, sys.stdin.readline().split()))   # 지방의 예산 요청
 national_budget = int(sys.stdin.readline())             # 전체 국가 예산
 
-budget.sort()       # 오름차순 정렬
-start, end = 0, budget[-1]      # 시작, 끝 인덱스 지정
+start, end = 0, max(budget)             # 시작, 끝 지정
 answer = 0
 
 if national_budget >= sum(budget):      # 요청된 예산의 총합보다 국가예산의 총액이 크다면
