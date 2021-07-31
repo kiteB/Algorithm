@@ -11,6 +11,7 @@ import sys
 A, B = sys.stdin.readline().split()
 
 answer = len(A)
+
 for i in range(len(B) - len(A) + 1):
     cnt = 0
     for j in range(len(A)):
