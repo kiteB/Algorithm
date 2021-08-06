@@ -12,7 +12,7 @@ road = list(map(int, sys.stdin.readline().split()))
 price = list(map(int, sys.stdin.readline().split()))
 
 min_price = price[0]            # 출발할 때는 무조건 첫 번째 도시에서 주유해야함.
-answer = 0
+answer = 0                      # 제일 왼쪽 도시에서 오른쪽 도시로 가는 최소 비용
 for i in range(n-1):
     min_price = min(min_price, price[i])
     answer += min_price * road[i]
