@@ -33,13 +33,12 @@ for i in case:
                     stack.append(2 * numbers)
                 break
             elif top == '[':
-                answer = 0
                 print(0)
                 exit(0)
             else:
                 numbers += int(top)
 
-    # 왼쪽 대괄호인 경우
+    # 오른쪽 대괄호인 경우
     elif i == ']':
         numbers = 0
 

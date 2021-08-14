@@ -42,15 +42,13 @@ def bfs(y, x, color):
             ny = y + dy[i]
 
             # 범위 내에 있는지 & 방문 여부 확인
-            if 0 <= nx < 6 and 0 <= ny < 12 and not visited[ny][nx]:
-                # 같은 색깔인지 확인
-                if field[ny][nx] == color:
-                    visited[ny][nx] = True      # 방문 여부 체크
-                    cnt += 1                    # 같은 색깔의 뿌요 터짐 개수 +1
-                    puyo.append([ny, nx])       # 터진 뿌요를 puyo에 저장
-                    deq.append([ny, nx])        # 다음 좌표 deq에 추가
+            if 0 <= nx < 6 and 0 <= ny < 12 and not visited[ny][nx] and field[ny][nx] == color:
+                visited[ny][nx] = True      # 방문 여부 체크
+                cnt += 1                    # 같은 색깔의 뿌요 터짐 개수 +1
+                puyo.append([ny, nx])       # 터진 뿌요를 puyo에 저장
+                deq.append([ny, nx])        # 다음 좌표 deq에 추가
 
-    # 2. 같은 색 뿌요가 4개 이상 연결되어 있으면 (cnt가 4 이상이면) 터진다. -> 이떄 1 연쇄 시작
+    # 2. 같은 색 뿌요가 4개 이상 연결되어 있으면 (cnt가 4 이상이면) 터진다. -> 이때 1 연쇄 시작
     if cnt >= 4:
         # 연결되어 있는 뿌요를 '.'로 바꿔주기
         for y, x in puyo:
@@ -85,7 +83,7 @@ answer = 0              # 전체 연쇄가 몇 번 되었는지
 # 필드를 돌면서 '.'이 아니고 아직 방문한 적이 없는 뿌요가 발견되면 함수 실행
 while True:
     visited = [[False] * 6 for _ in range(12)]  # 방문 여부 체크할 리스트
-    tmp = 0             # 탐색 동안 발생하는 연쇄 반응 횟수
+    tmp = 0             # 탐색 동안 발생하는 연쇄 발생 횟수
     for i in range(12):
         for j in range(6):
             if field[i][j] != '.' and not visited[i][j]:

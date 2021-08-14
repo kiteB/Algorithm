@@ -22,6 +22,6 @@ for _ in range(T):
             costume[kind] = 1
 
     answer = 1
-    for key in costume.keys():
-        answer *= costume[key] + 1
+    for val in costume.values():
+        answer *= val + 1
     print(answer - 1)
