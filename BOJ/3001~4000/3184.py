@@ -48,7 +48,7 @@ visited = [[False] * c for _ in range(r)]
 sheep_cnt, wolf_cnt = 0, 0  # 양, 늑대 개수
 for i in range(r):
     for j in range(c):
-        if maps[i][j] != '#' and not visited[i][j]:     # 울타리가 아니고 방문하지 않았다면 BFS 수행
+        if maps[i][j] != '#' and not visited[i][j]:     # 울타리가 아니고, 방문하지 않았다면 BFS 수행
             tmp = bfs(i, j)
             sheep_cnt += tmp[0]
             wolf_cnt += tmp[1]
