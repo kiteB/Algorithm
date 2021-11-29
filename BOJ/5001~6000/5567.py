@@ -1,37 +1,35 @@
-# 상근이는 자신의 결혼식에 학교 동기 중 자신의 친구와 친구의 친구를 초대하기로 했다.
-# 상근이의 동기는 모두 N명이고, 이 학생들의 학번은 모두 1부터 N까지이다. 상근이의 학번은 1이다.
-# 상근이는 동기들의 친구 관계를 모두 조사한 리스트를 가지고 있다.
-# 이 리스트를 바탕으로 결혼식에 초대할 사람의 수를 구하는 프로그램을 작성하시오.
-# 입력: 첫째 줄에 상근이의 동기의 수 n이 주어진다. 둘째 줄에는 리스트의 길이 m이 주어진다.
-# 다음 주부터 m개 줄에는 친구 관계 aibi가 주어진다. ai와 bi가 친구라는 뜻이며, bi와 ai도 친구 관계이다.
-# 출력: 첫째 줄에 상근이의 결혼식에 초대하는 동기의 수를 출력한다.
 import sys
 from collections import deque
 
-n = int(sys.stdin.readline())
-m = int(sys.stdin.readline())
-friends = [[] for i in range(n+1)]
-visited = [0 for i in range(n+1)]
-cnt = 0
-step = 0
+
+def bfs(start):
+    deq = deque([start])
+    distance[start] = 1     # 자기 자신은 1로 설정
+
+    while deq:
+        node = deq.popleft()
+
+        for i in friends[node]:
+            if not distance[i]:
+                distance[i] = distance[node] + 1    # 관계 수 업데이트
+                deq.append(i)
+
+
+n = int(sys.stdin.readline())   # 상근이의 동기의 수
+m = int(sys.stdin.readline())   # 리스트의 길이
+
+friends = [[] for _ in range(n + 1)]    # 친구 정보
+distance = [0 for _ in range(n + 1)]    # 관계를 저장할 리스트
 
 for i in range(m):
     a, b = map(int, sys.stdin.readline().split())
     friends[a].append(b)
     friends[b].append(a)
 
-deq = deque([1])
-visited[1] = 1
-while deq:
-    node = deq.popleft()
+bfs(1)  # bfs 수행
 
-    for i in friends[node]:
-        if visited[i] == 0:
-            visited[i] = visited[node] + 1
-            deq.append(i)
-
-ans = 0
-for i in visited:
-    if 2 <= i <= 3:
-        ans += 1
-print(ans)
+answer = 0
+for i in distance:
+    if 2 <= i <= 3:     # 2 (상근이의 친구), 3 (상근이의 친구의 친구)
+        answer += 1
+print(answer)
