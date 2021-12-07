@@ -2,6 +2,7 @@
 import sys
 
 n = int(sys.stdin.readline())
-Antenna = list(map(int, sys.stdin.readline().split()))
-Antenna.sort()
-print(Antenna[(n-1)//2])
+house = list(map(int, sys.stdin.readline().split()))
+house.sort()
+
+print(house[(n-1)//2])
