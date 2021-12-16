@@ -4,10 +4,12 @@ import sys
 case = list(sys.stdin.readline().strip())
 stack = []
 
-for i in case:
+if case[0] == ')' or case[0] == ']':
+    print(0)
+    exit(0)
 
-    # 오른쪽 소괄호인 경우
-    if i == ')':
+for i in case:
+    if i == ')':        # 오른쪽 소괄호인 경우
         numbers = 0
 
         while stack:
@@ -24,8 +26,7 @@ for i in case:
             else:
                 numbers += int(top)
 
-    # 오른쪽 대괄호인 경우
-    elif i == ']':
+    elif i == ']':      # 오른쪽 대괄호인 경우
         numbers = 0
 
         while stack:
