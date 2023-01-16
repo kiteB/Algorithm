@@ -1,4 +1,4 @@
-# 합승 택시 요금 - 47분
+# 합승 택시 요금
 def solution(n, s, a, b, fares):
     INF = int(1e9)          # 최댓값 설정
     graph = [[INF] * n for _ in range(n)]       # 노드 간 금액을 저장할 리스트

@@ -1,4 +1,4 @@
-# 오픈 채팅방 - 32분
+# 오픈 채팅방
 def solution(record):
     answer = []
     users = {}          # 유저의 아이디와 닉네임을 저장할 딕셔너리

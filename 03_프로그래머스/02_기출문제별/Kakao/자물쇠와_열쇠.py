@@ -1,4 +1,4 @@
-# 자물쇠와 열쇠 - 실패! (3시간 + α)
+# 자물쇠와 열쇠
 def rotate(arr):  # 90도 회전
     n = len(arr)
     tmp = [[0] * n for _ in range(n)]

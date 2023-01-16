@@ -1,4 +1,4 @@
-# 캐시 - 23분
+# 캐시
 from collections import deque
 
 

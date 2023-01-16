@@ -1,3 +1,4 @@
+# 순위 검색
 from itertools import combinations
 
 
