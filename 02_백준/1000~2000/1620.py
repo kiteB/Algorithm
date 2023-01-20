@@ -1,21 +1,14 @@
-# 첫째 줄에는 도감에 수록되어 있는 포켓몬의 개수 N과 내가 내가 맞춰야 하는 문제의 개수 M이 주어진다.
-# N과 M은 1보다 크거나 같고, 100,000보다 작거나 같은 자연수이다.
-# 둘째 줄부터 N개의 줄에 포켓몬의 번호가 1번인 포켓몬부터 N번에 해당하는 포켓몬까지 한 줄에 하나씩 입력으로 들어온다.
-# 포켓몬의 이름은 모두 영어로만 이루어져 있고, 첫 글자만 대문자이며 나머지 문자는 소문자로 이루어져 있다.
-# 포켓몬 이름의 최대 길이는 20이다. 그 다음 줄부터 총 M개의 줄에 내가 맞춰야하는 문제가 입력으로 들어온다.
-# 문제가 알파벳으로만 들어오면 포켓몬 번호를 말하고, 숫자로만 들어오면 포켓몬 번호에 해당하는 문자를 출력해야 한다.
-# 입력으로 들어오는 숫자는 반드시 1보다 크거나 같고, N보다 작거나 같고, 입력으로 들어오는 문자는 반드시 도감에 있는 포켓몬의 이름만 주어진다.
-# 출력: 첫째 줄부터 차례대로 M개의 줄에 각각의 문제에 대한 답을 출력하라.
-# 입력으로 숫자가 들어왔다면 그 숫자에 해당하는 포켓몬의 이름을, 문자가 들어왔으면 그 포켓몬에 해당하는 번호를 출력하라.
+# 나는야 포켓몬 몬스터 이다솜
 import sys
+input = sys.stdin.readline
 
-N, M = map(int, sys.stdin.readline().split())
-dictionary = {}
+n, m = map(int, input().split())
+pokemon_dict = dict()
 
-for i in range(1, N+1):
-    pokemon = sys.stdin.readline().strip()
-    dictionary[pokemon] = str(i)
-    dictionary[str(i)] = pokemon
+for idx in range(1, n + 1):
+    pokemon = input().strip()
+    pokemon_dict[pokemon] = idx
+    pokemon_dict[str(idx)] = pokemon    # 포켓몬 번호 입력 시 따로 검사하지 않기 위해서 str 값을 키로 설정
 
-for i in range(1, M+1):
-    print(dictionary[sys.stdin.readline().strip()])
+for i in range(1, m + 1):
+    print(pokemon_dict[input().rstrip()])
