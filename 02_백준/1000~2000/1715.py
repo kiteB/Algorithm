@@ -1,9 +1,10 @@
 # 카드 정렬하기
 import sys
 import heapq
+input = sys.stdin.readline
 
-n = int(sys.stdin.readline())
-cards = [int(sys.stdin.readline()) for _ in range(n)]
+n = int(input())
+cards = [int(input()) for _ in range(n)]
 heapq.heapify(cards)
 answer = 0
 
