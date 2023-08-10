@@ -1,13 +1,13 @@
 # 보물
 import sys
+input = sys.stdin.readline
 
-n = int(sys.stdin.readline())
-a = list(map(int, sys.stdin.readline().split()))
-b = list(map(int, sys.stdin.readline().split()))
+n = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
 
 a.sort()
 answer = 0
-
 for i in range(n):
     answer += a[i] * b.pop(b.index(max(b)))
 
