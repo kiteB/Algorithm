@@ -1,15 +1,16 @@
-# 잘못된 수를 입력할 때마다 0을 추가로 입력하여, 가장 최근 값을 지운 다음 모든 수의 합을 구하는 프로그램을 작성하시오.
+# 제로
 import sys
+input = sys.stdin.readline
 
-N = int(sys.stdin.readline())
-numbers = []
+n = int(input())
+stack = []
 
-for i in range(N):
-    num = int(sys.stdin.readline())
+for i in range(n):
+    num = int(input())
 
     if num == 0:
-        numbers.pop()
+        stack.pop()
     else:
-        numbers.append(num)
+        stack.append(num)
 
-print(sum(numbers))
+print(sum(stack))
