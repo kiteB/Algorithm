@@ -35,4 +35,3 @@ cnt = 1
 bfs(r)
 for i in range(1, n + 1):
     print(visited[i])
-    
