@@ -1,36 +1,21 @@
-# 민식이는 수학학원에서 단어 수학 문제를 푸는 숙제를 받았다.
-# 단어 수학 문제는 N개의 단어로 이루어져 있으며, 각 단어는 알파벳 대문자로만 이루어져 있다.
-# 이때, 각 알파벳 대문자를 0부터 9까지의 숫자 중 하나로 바꿔서 N개의 수를 합하는 문제이다.
-# 같은 알파벳은 숫자로 바꿔야 하며, 두 개 이상의 알파벳이 같은 숫자로 바뀌어지면 안된다.
-# 예를 들어, GCF + ACDEB를 계산한다고 할 때, A = 9, B = 4, C = 8, D = 6, E = 5, F = 3, G = 7로 결정한다면, 두 수의 합은 99437이 되어서 최대가 될 것이다.
-# N개의 단어가 주어졌을 때, 그 수의 합을 최대로 만드는 프로그램을 작성하시오.
-# 입력: 첫째 줄에 단어의 개수 N이 주어진다. 둘째 줄부터 N개의 줄에 단어가 한 줄에 하나씩 주어진다.
-# 단어는 알파벳 대문자로만 이루어져 있다. 모든 단어에 포함되어 있는 알파벳은 최대 10개이고, 수의 최대 길이는 8이다. 서로 다른 문자는 서로 다른 숫자를 나타낸다.
-# 출력: 첫째 줄에 주어진 단어의 합의 최댓값을 출력한다.
+# 단어 수학
 import sys
+from collections import defaultdict
+input = sys.stdin.readline
 
-N = int(sys.stdin.readline())
-words = []
+n = int(input())
+words = [input().strip() for _ in range(n)]
 
-for i in range(N):
-    words.append(list(map(str, sys.stdin.readline().strip())))
+word_dict = defaultdict(int)
+for i in range(n):
+    for j, val in enumerate(words[i]):
+        word_dict[val] += pow(10, len(words[i]) - j - 1)
 
-dic = {}
-for i in range(N):
-    for j in range(len(words[i])):
-        # dic에 해당 원소가 없으면 값 그대로 넣어주기
-        if words[i][j] not in dic:
-            dic[words[i][j]] = pow(10, len(words[i])-j-1)
-        # dic에 해당 원소가 있으면 기존 값에 추가로 넣어주기
-        else:
-            dic[words[i][j]] += pow(10, len(words[i])-j-1)
-
-
-sorted_dic = sorted(dic.items(), key=lambda x:x[1], reverse=True)
+result = sorted(word_dict.items(), key=lambda x: -x[1])
 answer = 0
 num = 9
-for i in range(len(sorted_dic)):
-    answer += num * sorted_dic[i][1]
+for key, val in result:
+    answer += num * val
     num -= 1
 
 print(answer)
